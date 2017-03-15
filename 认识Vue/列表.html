@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="p in persons | filterBy 'o' in 'name'">
+         {{$index}}--{{p.name}}-{{p.age}}--
+            <button @click='deleteItem(p)'>删除</button>
+            <button @click="updateItem(p,{name:'Tom', age:12})">更新</button>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            persons : [
+                {name:'Tom', age:12},
+                {name:'Jack', age:13},
+                {name:'Bob', age:14}
+            ]
+        },
+        methods: {
+            deleteItem(p) {
+                //数组中有过滤，不能根据index 删除，要根据元素删除
+//                var index = this.persons.indexOf(p)
+//                this.persons.splice(index,1)
+                this.persons.$remove(p)
+            },
+            updateItem(p,newV){
+                const index = this.persons.indexOf(p)
+                this.persons.$set(index,newV)
+            }
+
+
+        },
+
+        computed: {}
+    });
+</script>
+
+</body>
+</html>

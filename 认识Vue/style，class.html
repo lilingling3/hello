@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <style>
+        .classA {
+            background: red;
+        }
+        .classB {
+            color : yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p class="static" :class="{classA:isA,classB:isB}">测试v-bind:class 对象语法</p>
+    <p class="static" :class="['classA','classB']">测试v-bind:class 数组语法</p>
+    <p class="static" :class="[classA,classB]">测试v-bind:class 数组语法</p>
+    <p :style="{ color: activeColor, fontSize: fontSize + 'px' }">测试v-bind:style</p>
+</div>
+</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            isA:true,
+            isB:true,
+            classA:'classA',
+            classB:'classB',
+            activeColor:'red',
+            fontSize:30
+        },
+        methods: {},
+
+        computed: {}
+    });
+</script>
+
+</body>
+</html>

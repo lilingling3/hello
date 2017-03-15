@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+</head>
+<body>
+<div id="app">
+    <p v-if="ok">完成</p>
+    <p v-else>未完成</p>
+    <p v-show="!ok">show</p>
+    <template v-if="ok">
+        <p>gggggg</p>
+        <p>gggggg</p>
+        <p>gggggg</p>
+    </template>
+</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            ok:true
+        },
+        methods: {},
+
+        computed: {}
+    });
+</script>
+
+</body>
+</html>
