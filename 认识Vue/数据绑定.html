@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+</head>
+<body>
+<div id="app">
+
+    <p v-text="msg"></p>
+    <p>{{msg}}</p>
+    <p v-html="msg"></p>
+    <p>{{{msg}}}</p>
+    <a :href="url">百度</a>
+
+    <input type="text" @keyup.enter="handleEner" @keyup.32="backSpace('hello',$event)">
+
+
+
+</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+    el : '#app',
+    data : {
+        msg:'<a href="www.baidu.com">百度</a>',
+        url :'https://www.baidu.com/'
+    },
+    methods : {
+        handleEner(event){
+            console.log(event.target.value)
+        },
+        backSpace(msg,event){
+            console.log(msg + event.target.value);
+        }
+
+    },
+    
+    computed : {
+        
+    }
+});
+</script>
+
+</body>
+</html>
