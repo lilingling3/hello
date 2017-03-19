@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<div id="wrap">
+    id: <input type="text" id="id">
+    名字：<input type="text" id="name">
+    价格：<input type="text" id="price">
+    <button id="button">点击获取名字，价格</button>
+</div>
+<script type="text/javascript">
+  $(function () {
+      var $name = $('#name')
+      var $price = $('#price')
+      var $button = $('#button')
+      var $id = $('#id')
+
+      $button.click(function () {
+          var url = 'http://localhost:8080/forlove/getbook';
+          var id = $id.val()
+          console.log(id)
+          $.post({
+              url:url,
+              data:{id:id},
+              dataType:'json',
+              //headers: {'Access-Control-Allow-Origin': 'true'},
+              success:function (data) {
+//                  var data = JSON.parse(data)
+                  var name = data.name;
+                  var price = data.price;
+                  $name.val(name)
+                  $price.val(price)
+              }
+          })
+      })
+  })
+</script>
+
+</body>
+</html>

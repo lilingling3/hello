@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 2000px">
 <div id="app">
     <p class="static" :class="{classA:isA,classB:isB}">测试v-bind:class 对象语法</p>
     <p class="static" :class="['classA','classB']">测试v-bind:class 数组语法</p>
@@ -36,6 +36,42 @@
 
         computed: {}
     });
+    
+    
+//    for(var i=0;i<5;i++){
+//        setTimeout(function () {
+//            console.log(i);
+//        },1000)
+//    }
+
+
+    //scroll方法中的do somthing至少间隔500毫秒执行一次
+//    window.addEventListener('scroll',function(){
+//        var timer;//使用闭包，缓存变量
+//        return function(){
+//            if(timer) clearTimeout(timer);
+//            timer = setTimeout(function(){
+//                console.log('do somthing')
+//            },500)
+//        }
+//    }());//此处()作用 - 立即调用return后面函数，形成闭包
+
+    //scroll方法中当间隔时间大于2s，do somthing执行一次
+    window.addEventListener('scroll',function(){
+        clearTimeout(timer)
+        var timer ;//使用闭包，缓存变量
+        var startTime = new Date();
+        return function(){
+            var curTime = new Date();
+            if(curTime - startTime >= 2000){
+                timer = setTimeout(function(){
+                    console.log('do somthing')
+                },500);
+                startTime = curTime;
+            }
+
+        }
+    }());//此处()作用 - 立即调用return后面函数，形成闭包
 </script>
 
 </body>
